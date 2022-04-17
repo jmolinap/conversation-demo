@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head itemscope="" itemtype="http://schema.org/WebSite">
+  <script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
   <title itemprop="name">Demo chat</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description"
@@ -698,6 +699,17 @@
     <script type="text/javascript">$(function () {
         $(".chat").niceScroll();
       })</script>
+
+<script>
+  const beamsClient = new PusherPushNotifications.Client({
+      instanceId: 'e7bc701e-7d8f-42c1-9858-41dd19319aca',
+  });
+
+  beamsClient.start()
+      .then(() => beamsClient.addDeviceInterest('hello'))
+      .then(() => console.log('Successfully registered and subscribed!'))
+      .catch(console.error);
+</script>
   </div>
 </body>
 
